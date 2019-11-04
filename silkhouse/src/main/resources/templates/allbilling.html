@@ -1,0 +1,10 @@
+<html>
+<body>
+<th:block th:include="header"></th:block>
+<tr th:each="message : ${messages}">
+    <td th:text="${message.id}">1</td>
+    <td><a href="${'/admin/allbilling/'+bid+''}" th:text="${message.title}">Title ...</a></td>
+</tr>
+<th:block th:include="tail"></th:block>
+</body>
+</html>

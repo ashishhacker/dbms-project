@@ -1,0 +1,65 @@
+<html>
+<body>
+<th:block th:include="header"></th:block>
+
+<html>
+<head>
+<title>ALL Employee</title>
+</head>
+<br> </br>
+<br> </br>
+<br> </br>
+<style>
+  .p{
+    margin:10px 40px;
+  }
+</style>
+<table class="table table-striped p">
+        <thead>
+          <tr>
+            <th>Employee id</th>
+            <th>Employee Type</th>
+            <th>Joining Date</th>
+            <th>Holiday</th>
+            <th>Update</th>
+            <th>Salary</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item: ${employee}"> 
+        <td><span th:text="${item.employee_id}"> Employee id</span></td>
+        <td th:switch="${item.employee_type}" >
+        <span th:case=0 th:text="Saree"/>
+        <span th:case=1 th:text="Suit"/>
+        <span th:case=2 th:text="Shirt"/>
+        <span th:case=3 th:text="Pant"/>
+        </td>
+        <td><span th:text="${item.joining_date}"> Joining Date </span></td>
+        <td><span th:text="${item.holiday}"> Holiday</span></td>
+         <td>
+          <form method ="post" th:action="${'/admin/employee/update/'+item.employee_id+''}" modelAttribute="employee" >
+          <input type="int" name="holiday" th:value="${item.holiday }" />
+          <input type ="submit" value="update" />
+          </form>
+        <td><span th:text="${item.salary}"> Salary</span></td>
+        <td><a th:href="${'/admin/employeedelete/'+item.employee_id+''}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <br> </br>
+    <br> </br>
+    <style>
+      .p1{
+        margin: 10px 750px;
+      }
+    </style>
+    <div class="p1">
+      <h1><a th:href="${'/admin/employee/addemployee'}" style="font-weight: bold; font-size: 25px">AddEmployee</a></h1>
+     </div>
+    <br> </br>
+    <br> </br>
+    <br> </br>
+<th:block th:include="tail"></th:block>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<body>
+<th:block th:include="header"></th:block>
+
+<html>
+<head>
+<title>ALL USERS</title>
+</head>
+<br> </br>
+<br> </br>
+<br> </br>
+<style>
+  .p{
+    margin:10px 40px;
+  }
+</style>
+<table class="table table-striped p">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item: ${list}"> 
+        <td><span th:text="${item.username}"> item </span></td>
+        <td><span th:text="${item.fname}"> item </span></td>
+        <td><span th:text="${item.lname}"> item </span></td>
+        <td><span th:text="${item.phone}"> item </span></td>
+        <td><span th:text="${item.email}"> item </span></td>
+        </tr>
+        </tbody>
+    </table>
+    
+
+
+<th:block th:include="tail"></th:block>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+<body>
+<th:block th:include="header"></th:block>
+<div class="col-lg-6 col-md-6">
+        <div class="form_inline">
+            <div class="form_inline">
+                <h3>fill details of Purcahse <br>
+                    </h3>
+                <form class="row contact_form" th:action="@{billing}" th:object="${bill}"   method="post" >
+                    <div class="col-md-12 form-group p_star">
+                        <input type="number" class="form-control"  th:field="*{customer_id}" name="Customer id" value=""
+                            placeholder="CUSTOMER ID">
+                            <form:errors path="username" />
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                        <input type="text" class="form-control" th:field="*{billing_date}" name="billing_date" value=""
+                            placeholder="BILLING DATE">
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" th:field="*{modeofpayment}" name="MODEOFPAYMENT" value=""
+                                placeholder="MODEOFPAYMENT">
+                        </div>
+                        <input type="submit" class="btn_3" value="AddPurchaseInfo" />
+                        <span th:if="${errors!=null}" th:text="${errors}"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+<th:block th:include="tail"></th:block>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<html>
+<body>
+<th:block th:include="header"></th:block>
+<div class="col-lg-6 col-md-6">
+        <div class="form_inline">
+            <div class="form_inline">
+                <h3>fill details of Employee <br>
+                    </h3>
+                <form class="row contact_form" th:action="@{addemployee}" th:object="${Profile}"   method="post" >
+                    <div class="col-md-12 form-group p_star">
+                        <input type="text" class="form-control"  th:field="*{fname}" name="FirstName" value=""
+                            placeholder="FirstName">
+                            <form:errors path="username" />
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                        <input type="text" class="form-control" th:field="*{lname}" name="lastname" value=""
+                            placeholder="LastName">
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" th:field="*{phone1}" name="Phone" value=""
+                                placeholder="Phone number">
+                        </div>
+                    <div class="col-md-12 form-group p_star">
+                        <input type="text" class="form-control" th:field="*{phone2}" name="phone2" value=""
+                            placeholder="Optional number">
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                        <input type="number" class="form-control" th:field="*{salary}" name="salary" value=""
+                            placeholder="Salary">
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                        <input type="text" class="form-control" th:field="*{joining_date}" name="joining date" value=""
+                            placeholder="Joining Date">
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                        <input type="text" class="form-control" th:field="*{adhar_number}" name="Adhar Number" value=""
+                            placeholder="Adhar Number">
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                        <input type="text" class="form-control" th:field="*{email}" name="@email" value=""
+                            placeholder="email">
+                            <form:errors path="email" />
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                            <input type="number" class="form-control" th:field="*{employee_type}" name="Job Position" value=""
+                                placeholder="Job Position">
+                                <form:errors path="email" />
+                        </div>
+                        <input type="submit" class="btn_3" value="Addemployee" />
+                        <span th:if="${#error!=null}" th:text="${errors}"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+<th:block th:include="tail"></th:block>
+</body>
+</html>
