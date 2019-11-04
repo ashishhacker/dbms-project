@@ -32,41 +32,29 @@ public class ItemdaoImpl implements Itemdao{
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-	public Item getItem(int itemId) {
-		String sql="select * from ITEMS where itemId=\""+itemId+"\"";
-		return jdbcTemplate.query(sql, new ResultSetExtractor<Item>() {
-			public Item extractData(ResultSet rs) throws SQLException
-			{
-				if(rs.next())
-				{
-					Item item=new Item();
-					item.setItemId(rs.getInt("itemId"));
-					item.setName(rs.getString("name"));
-					item.setDescription(rs.getString("description"));
-					item.setQuantity(rs.getInt("quant"));
-					return item;
-				}
-				return null;
-			}
-			
-		}
-		);
-	}
+	
 	
 	public void deleteItem(int itemId) {
 		String sql="delete from products where product_id=\""+itemId+"\"";
 		jdbcTemplate.update(sql);
-	}
-	public void addItem(Item item) {
-		String sql="insert into ITEMS set name=?,description=?,quantity=?";
-		Object[] object= {item.getName(),item.getDescription(),item.getQuantity()};
-		jdbcTemplate.update(sql,object);
 	}
 	public List<Item> getAllItems() {
 		List<Item> list;
 		String sql="select * from ITEMS";
 		list=(List<Item>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<Item>(Item.class));
 		return list;
+	}
+
+	@Override
+	public Item getItem(int itemId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addItem(Item item) {
+		// TODO Auto-generated method stub
+
 	}
 
 
