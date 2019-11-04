@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sarika.silkhouse.dao.Categorydao;
 import com.sarika.silkhouse.model.Category;
-import com.sarika.silkhouse.model.Item;
 import com.sarika.silkhouse.model.Location;
 import com.sarika.silkhouse.model.User;
 

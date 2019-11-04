@@ -22,7 +22,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.sarika.silkhouse.dao.Cartdao;
 import com.sarika.silkhouse.dao.Locationdao;
 import com.sarika.silkhouse.model.BLocation;
-import com.sarika.silkhouse.model.Cart;
 import com.sarika.silkhouse.model.Category;
 import com.sarika.silkhouse.model.Event;
 import com.sarika.silkhouse.model.GetOrder;
@@ -41,24 +40,6 @@ public class LocationController {
 		List<Location> list=locationdao.getallloc();
 		model.addAttribute("list",list);
 		return "location";
-	}
-	@RequestMapping("getlocation")
-	public String locationt(Model model,HttpServletRequest request)
-	{
-		Calendar cal=Calendar.getInstance();
-//		model.addAttribute("date",LocalDate.now());
-		model.addAttribute("date",request.getParameter("bdate"));
-		List<Location> list=locationdao.getlocbydate(request.getParameter("bdate"));
-		model.addAttribute("list",list);
-		return "locmodfy";
-	}
-	@RequestMapping(value="book/{lid}",method=RequestMethod.GET)
-	public String addtocart(Model model,@PathVariable(value="lid") int lid,HttpServletRequest request) 
-	{
-		String uid=request.getUserPrincipal().getName();
-		Cart cart=new Cart();
-		locationdao.book(lid, uid, cart,request.getParameter("bdate"));
-		return "";
 	}
 	@RequestMapping(value="bookloc/{lid}/{date}/addevent",method=RequestMethod.GET)
 	public String bookloc(Model model,@PathVariable(value="lid") int lid,HttpServletRequest request) 
@@ -81,28 +62,6 @@ public class LocationController {
 		List<BLocation> list=locationdao.getlocbyuser(uid);
 		model.addAttribute("list",list);
 		return "locbyuser";
-		
-	}
-	@RequestMapping("buyitem/select/{bid}")
-	public String placeorder(Model model,@PathVariable(value="bid") int bid, HttpServletRequest request)
-	{
-		String uid=request.getUserPrincipal().getName();
-		locationdao.placeorder(uid,bid);
-		List<Cart> list=cartdao.getcart(uid);
-		Iterator<Cart> itr=list.iterator();
-		if(!itr.hasNext())
-		{
-			return "redirect:/cart";
-		}
-		while(itr.hasNext())
-		{
-			Cart cart=itr.next();
-//			System.out.println(cart.getItemName()+" "+cart.getQuantity());
-			locationdao.placeitem(cart.getIid() ,cart.getQuantity(),cart.getTprice(),bid);
-			cartdao.deleteItem(cart.getIid(), uid);
-		}
-		
-		return "jingle";
 		
 	}
 	@RequestMapping("order")
