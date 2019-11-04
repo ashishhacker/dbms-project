@@ -1,0 +1,52 @@
+<html>
+	<th:block th:include="header"></th:block>  
+<div class="col-lg-6 col-md-6">
+	<div class="form_inline">
+		<div class="form_inline">
+			<h3>Please Sign in now <br>
+				</h3>
+			<form class="row contact_form" th:action="@{register}" th:object="${user}"   method="post" >
+				<div class="col-md-12 form-group p_star">
+					<input type="text" class="form-control"  th:field="*{username}" name="username" value=""
+						placeholder="Username">
+						<form:errors path="username" />
+				</div>
+				<div class="col-md-12 form-group p_star">
+					<input type="paasword" class="form-control" th:field="*{password}" name="password" value=""
+						placeholder="password">
+				</div>
+				<div class="col-md-12 form-group p_star">
+						<input type="paasword" class="form-control" th:field="*{mpassword}" name="mpassword" value=""
+							placeholder="mpassword">
+					</div>
+				<div class="col-md-12 form-group p_star">
+					<input type="text" class="form-control" th:field="*{fname}" name="@firstname" value=""
+						placeholder="first name">
+				</div>
+				<div class="col-md-12 form-group p_star">
+					<input type="text" class="form-control" th:field="*{lname}" name="@lastname" value=""
+						placeholder="last name">
+				</div>
+				<div class="col-md-12 form-group p_star">
+					<input type="text" class="form-control" th:field="*{phone}" name="@phonenumber" value=""
+						placeholder="phone">
+				</div>
+				<div class="col-md-12 form-group p_star">
+					<input type="text" class="form-control" th:field="*{email}" name="@email" value=""
+						placeholder="email">
+						<form:errors path="email" />
+				</div>
+					<input type="submit" class="btn_3" value="signup" />
+				</div>
+			    </form>
+					
+					
+					<span th:if="${error!=null}" th:text="${'error: '+error+' '}" style="font-weight: bold; font-size: 25px" ></span>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<th:block th:include="tail"></th:block>
+
+</html>

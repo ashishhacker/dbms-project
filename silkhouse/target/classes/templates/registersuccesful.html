@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<th:block th:include="header"></th:block>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title>Successfully registered</title>
+      <style>
+        span {color: blue;}
+      </style>
+   </head>
+   <body>
+      <h2>You have successfully registered!</h2>
+        <br></br>
+        <br></br>
+        <br></br>
+      <div th:if="${user != null}">
+         <ul>
+            <div style="font-weight: bold; font-size: 25px">
+            <li>UserName: <span th:utext="${user.username}" >..</span></li>
+            <li>Name: <span th:utext="${user.fname}" >..</span></li>
+            <li>Name: <span th:utext="${user.lname}" >..</span></li>
+         </div>
+         </ul>
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+   </body>
+   <th:block th:include="tail"></th:block>
+</html>

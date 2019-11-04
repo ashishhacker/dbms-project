@@ -1,0 +1,113 @@
+<th:block th:include="header"></th:block>
+
+    <!--================Home Banner Area =================-->
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner">
+                        <div class="breadcrumb_iner_item">
+                            <p>Home / Category</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+
+    <!--================Category Product Area =================-->
+   
+    <section class="cat_product_area section_padding border_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="left_sidebar_area">
+                        <aside class="right_widgets p_filter_widgets sidebar_box_shadow"></aside>
+                            <div class="l_w_title">
+                                <h3>Browse Categories</h3>
+                            </div>
+                            <div class="widgets_inner">
+                                <ul class="list">
+                                    <li class="sub-menu">
+                                        <a href="#" class=" d-flex justify-content-between">
+                                            <td><span th:text="${var1}"> var1 </span></td>
+                                            <div class="right ti-plus"></div>
+                                        </a>
+                                        <ul>
+                                            <li>
+                                                <a th:href="${''+var1+'/formal'}">formal</a>
+                                            </li>
+                                            <li>
+                                                <a th:href="${''+var1+'/casual'}">casual</a>
+                                            </li>
+                                            <li>
+                                                <a th:href="${''+var1+'/ethnic'}">ethnic</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                        </aside>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                        <head>
+                            <title>products</title>
+                         </head>
+                                <head>
+                                        <style>
+                                       table {
+                                width: 100%;
+                              }
+                              
+                              th {
+                                height: 50px;
+                              }
+                                        </style>
+                                        </head>
+                                                <body> 
+                           <table border = "3" cellpadding = "15" cellspacing = "60"  bordercolor = "blue" >
+                               <tr>
+                                    <th scop="col">product Id</th>
+                                  <th scop="col">name</th>
+                                  <th scop="col">material</th>
+                                  <th scop="col">product_type</th>
+                                  <th scop="col">product_category</th>
+                                  <th scop="col">price</th>
+                                  <th scop="col">discount</th>
+                                  <th scop="col">stock</th>
+                                  <th scop="col">Delete</th>
+                               </tr>
+                               <tr>
+                                <tr th:each="product: ${products}"> 
+                                
+                                    <div class="col-lg-4 col-sm-6">
+                                                <div class="category_product_text">
+                                                    <td><span th:text="${product.product_id}"> id </span></td>
+                                                    <td><span th:text="${product.name}"> name </span></td>
+                                                    <td><span th:text="${product.material}"> materail </span></td>
+                                                    <td><span th:text="${product.product_type}"> product_type </span></td>
+                                                    <td><span th:text="${product.product_category}"> product_category</span></td>
+                                                    <td><span th:text="${product.price}"> price </span></td>
+                                                    <td><span th:text="${product.discount}"> discount </span></td>
+                                                    <td><span th:text="${product.stock}"> stock</span></td>
+                                                <td><a th:href="${'/admin/allcat/deleteitem/'+product.product_id+''}">Delete</a></td>
+                                        </div>
+                                    </div>
+                                </tr>
+                               </tr>
+                            </table>
+                         </body>
+                         <div class="col-lg-12 text-center">
+                            <a href="/admin/allcat/additem" class="btn_2">Add Items</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Category Product Area =================-->
+    <th:block th:include="tail"></th:block>
+</body>
+
+</html>

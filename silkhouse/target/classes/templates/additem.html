@@ -1,0 +1,52 @@
+<html>
+	<th:block th:include="header"></th:block>  
+<div class="col-lg-6 col-md-6">
+	<div class="form_inline">
+		<div class="form_inline">
+			<h3>Enter product details<br>
+				</h3>
+			<form class="row contact_form" th:action="@{/admin/allcat/additem}" th:object="${Item}"   method="post" >
+				<div class="col-md-12 form-group p_star">
+					<input type="text" class="form-control"  th:field="*{name}" name="name" value=""
+						placeholder="Name">
+						<form:errors path="username" />
+				</div>
+				<div class="col-md-12 form-group p_star">
+					<input type="text" class="form-control" th:field="*{product_type}" name="Product Type" value=""
+						placeholder="Product Type">
+				</div>
+				<div class="col-md-12 form-group p_star">
+						<input type="text" class="form-control" th:field="*{product_category}" name="Product Category" value=""
+							placeholder="Product Category">
+					</div>
+				<div class="col-md-12 form-group p_star">
+					<input type="number" class="form-control" th:field="*{stock}" name="Stock" value=""
+						placeholder="Stock">
+				</div>
+				<div class="col-md-12 form-group p_star">
+					<input type="number" class="form-control" th:field="*{discount}" name="Discount" value=""
+						placeholder="Discount">
+				</div>
+				<div class="col-md-12 form-group p_star">
+					<input type="number" class="form-control" th:field="*{price}" name="Price" value=""
+						placeholder="Price">
+				</div>
+				<div class="col-md-12 form-group p_star">
+					<input type="material" class="form-control" th:field="*{material}" name="Material" value=""
+						placeholder="Material">
+						<form:errors path="email" />
+				</div>
+					<input type="submit" class="btn_3" value="Add" />
+				</div>
+			    </form>
+					
+					
+					<span th:if="${#error!=null}" th:text="${'error: '+error+' '}" style="font-weight: bold; font-size: 25px" ></span>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<th:block th:include="tail"></th:block>
+
+</html>

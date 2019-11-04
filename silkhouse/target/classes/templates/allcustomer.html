@@ -1,0 +1,49 @@
+<html>
+<body>
+<th:block th:include="header"></th:block>
+
+<html>
+<head>
+<title>ALL Employee</title>
+</head>
+<br> </br>
+<br> </br>
+<br> </br>
+<style>
+  .p{
+    margin:10px 40px;
+  }
+</style>
+<table class="table table-striped p">
+        <thead>
+          <tr>
+            <th>Customer id</th>
+            <th>House Number</th>
+            <th>Pincode</th>
+            <th>State</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item: ${customer}"> 
+        <td><span th:text="${item.customer_id}"> Customer id</span></td>
+        <td><span th:text="${item.house_number}"> House Number </span></td>
+        <td><span th:text="${item.pincode}"> Pincode</span></td>
+        <td><span th:text="${item.state}">State</span></td>
+        </tbody>
+    </table>
+    <br> </br>
+    <br> </br>
+    <style>
+      .p1{
+        margin: 10px 750px;
+      }
+    </style>
+    <div class="p1">
+      <h1><a th:href="${'/admin/allcustomer/addcustomer'}" style="font-weight: bold; font-size: 25px">Add Customer</a></h1>
+     </div>
+    <br> </br>
+    <br> </br>
+    <br> </br>
+<th:block th:include="tail"></th:block>
+</body>
+</html>

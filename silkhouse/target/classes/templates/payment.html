@@ -1,0 +1,44 @@
+<html>
+<body>
+<th:block th:include="header"></th:block>
+
+<html>
+<head>
+<title>DETAILS OF PURCHASE</title>
+</head>
+<br> </br>
+<br> </br>
+
+<br> </br>
+<style>
+  .p{
+    margin:10px 40px;
+  }
+</style>
+<div class="p">
+         <th><span th:text="${'Customerid:'+customerid+''}" style="font-weight: bold; font-size: 25px" > total</span></th></h>
+</div>
+<br> </br>
+<table class="table table-striped p">
+        <thead>
+          <tr>
+              <th>Billing ID</th>
+              <th>Product ID</th>
+              <th>Quantity</th>
+              <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item: ${Bill}"> 
+        <td><span th:text="${item.billing_id}"> item </span></td>
+        <td><span th:text="${item.product_id}"> item </span></td>
+        <td><span th:text="${item.quantity}"> item </span></td>
+        <td><span th:text="${item.price}"> item </span></td>
+        </tr>
+        </tbody>
+    </table>
+    <br></br>
+    <th><span th:text="${'SUB-TOTAL:'+totalprice+''}" style="font-weight: bold; font-size: 25px" > total</span></th></h>
+    <br></br>
+<th:block th:include="tail"></th:block>
+</html>
