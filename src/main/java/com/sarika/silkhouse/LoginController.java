@@ -102,6 +102,11 @@ public class LoginController {
 				model.addAttribute("error", "mobile number already exists");
 				return "register";
 			}
+			String str=user.getEmail();
+			if(str.length()>10) {
+				model.addAttribute("error", "email length is very large");
+				return "register";
+			}
 			userdao.saveOrUpdate(user);
 			return "registersuccesful";
 		}
